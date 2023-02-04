@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Enemy;
 
-public class ScriptEnemyController : MonoBehaviour
+public class ScriptEnemyController : MonoBehaviour, HitAbleEnemy
 {
     public ScriptHealthController enemyDamage;
 
@@ -89,5 +90,11 @@ public class ScriptEnemyController : MonoBehaviour
     {
         var text = Instantiate(floatTextPrefab, transform.position, Quaternion.identity, transform);
         text.GetComponent<TextMeshProUGUI>().text = enemycurrentHealth.ToString();
+    }
+
+    public bool HitEnemy(int damage)
+    {
+        TakeDamageEnemy(damage);
+        return enemycurrentHealth <= 0;
     }
 }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScriptHealthController : MonoBehaviour, HitPlayer
 {
-
     public float currentHealth;
     public float maxHealth;
 
@@ -13,6 +13,8 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     public Animator animPlayer;
 
     public AudioSource audioPlayer;
+
+    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
     void Start()
     {
@@ -29,6 +31,8 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     {
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
+
+        SceneManager.LoadScene(3);
     }
 
     public void Player_TakeDamage(int amount)

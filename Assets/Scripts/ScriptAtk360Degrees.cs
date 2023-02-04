@@ -11,14 +11,24 @@ public class ScriptAtk360Degrees : MonoBehaviour
 
     public bool canrightATK;
 
+    private Animator animPlayer;
+
+    public AudioSource audioAtk;
+
+    private void Start()
+    {
+        animPlayer = GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-
             if (canrightATK)
             {
                 canrightATK = false;
+                animPlayer.SetTrigger("isAttack360degree");
+                audioAtk.Play();
                 StartCoroutine(RightAttackSpeed());
             }
         }

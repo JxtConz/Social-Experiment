@@ -22,6 +22,8 @@ public class ScriptEnemyController : MonoBehaviour
 
     private Animator anim;
 
+    public AudioSource audioRoots;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -55,6 +57,7 @@ public class ScriptEnemyController : MonoBehaviour
 
     private IEnumerator Delay_EnemyDead()
     {
+        audioRoots.Play();
         yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }

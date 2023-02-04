@@ -12,6 +12,8 @@ public class ScriptAtkSlash : MonoBehaviour
 
     private Animator animPlayer;
 
+    public AudioSource audioAtk;
+
     private void Start()
     {
         animPlayer = GetComponent<Animator>();
@@ -22,11 +24,11 @@ public class ScriptAtkSlash : MonoBehaviour
         //Left Click
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            animPlayer.SetTrigger("isAttack");
-
             if (canleftATK)
             {
                 canleftATK = false;
+                animPlayer.SetTrigger("isAttack");
+                audioAtk.Play();
                 StartCoroutine(LeftAttackSpeed());
             }
         }

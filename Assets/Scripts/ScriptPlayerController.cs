@@ -36,25 +36,25 @@ public class ScriptPlayerController : MonoBehaviour
 
         
 
-        anim.SetFloat("Horizontal", moveDir.x);
+        /*anim.SetFloat("Horizontal", moveDir.x);
         anim.SetFloat("Vertical", moveDir.y);
-        anim.SetFloat("moveSpeed", moveDir.sqrMagnitude);
+        anim.SetFloat("moveSpeed", moveDir.sqrMagnitude);*/
 
         if (moveDir.x == -1f)
         {
-           
+            anim.SetTrigger("isLeft");
         }
         else if (moveDir.x == 1f)
         {
-            
+            anim.SetTrigger("isRight");
         }
         else if (moveDir.y == 1f)
         {
-            
+            anim.SetTrigger("isBack");
         }
         else if (moveDir.y == -1f)
         {
-            
+            anim.SetTrigger("isTop");
         }
 
         moveDir.Normalize();

@@ -1,3 +1,4 @@
+using Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +41,20 @@ public class ScriptAtkSlash : MonoBehaviour
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRenge, enemyLayers);
 
+        foreach (Collider2D enemy in hitEnemies)
+        {
+
+            Debug.Log("attack "  + enemy.name);
+            HitAbleEnemy hit = enemy.GetComponent<HitAbleEnemy>();
+            if(hit != null)
+            {
+                hit.HitEnemy(1);
+            }
+            //enemy.GetComponent<ScriptEnemyController>().TakeDamageEnemy(1);
+            
+        }
+
+        /*
         if (GameObject.FindGameObjectWithTag("Enemy"))
         {
             foreach (Collider2D enemy in hitEnemies)
@@ -47,7 +62,7 @@ public class ScriptAtkSlash : MonoBehaviour
                 enemy.GetComponent<ScriptEnemyController>().TakeDamageEnemy(1);
                 Debug.Log("1");
             }
-        }
+        }*/
         yield return new WaitForSeconds(0.5f);
         canleftATK = true;
     }

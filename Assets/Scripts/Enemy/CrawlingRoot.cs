@@ -44,6 +44,11 @@ namespace Enemy
 
         public bool testHit;
 
+        public float colliderThickness = 1f;
+
+        public GameObject head;
+        private SpriteRenderer headSpriteRenderer;
+
         void OnValidate()
         {
             if (testHit)
@@ -65,6 +70,8 @@ namespace Enemy
             g.transform.parent = transform;
             g.AddComponent<BoxCollider2D>();
             g.layer = this.gameObject.layer;
+            RootDelegate d = g.AddComponent<RootDelegate>();
+            d.owner = this;
             return g;
         }
 
@@ -86,6 +93,43 @@ namespace Enemy
         {
             Vector3 dis = a - b;
             return dis.sqrMagnitude > MIN_NODE_DISTANCE;
+        }
+
+        private void RotateHead(Vector3 newPos)
+        {
+            if(head != null)
+            {
+                head.transform.position = newPos;
+                Vector3 dir = (GetTarget() - newPos);
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                head.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
+        }
+
+        private void SetupHead()
+        {
+            if (head != null)
+            {
+                headSpriteRenderer = head.GetComponent<SpriteRenderer>();
+                SetHeadColor(normalColor);
+            }
+        }
+        private void SetHeadColor(Color c)
+        {
+            if (headSpriteRenderer != null)
+            {
+                headSpriteRenderer.color = c;
+            }
+        }
+
+        private void SetHeadAlpha(float f)
+        {
+            if (headSpriteRenderer != null)
+            {
+                Color c = headSpriteRenderer.color;
+                c.a = f;
+                headSpriteRenderer.color = c;
+            }
         }
 
         private void MoveOrCreateNode(float delta)
@@ -116,6 +160,7 @@ namespace Enemy
                     a.transform.position = newTarget;
                     lineRenderer.SetPosition(points.Count - 1, newTarget);
                 }
+                RotateHead(newTarget);
                 CalcCollider(a, b);
             }
 
@@ -132,7 +177,7 @@ namespace Enemy
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 c.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-                coll.size = new Vector2(length, 1);
+                coll.size = new Vector2(length, colliderThickness);
                 coll.offset = new Vector2(length / 2, 0); 
             }
                         
@@ -153,6 +198,8 @@ namespace Enemy
             }
         }
 
+  
+
         // Start is called before the first frame update
         void Start()
         {
@@ -166,6 +213,7 @@ namespace Enemy
                 
             target = player.GetComponent<HitPlayer>();
 
+
             distaceNeededToPlayerSqr = distaceNeededToPlayer * distaceNeededToPlayerSqr;
             points = new List<GameObject>();
             points.Add(gameObject);
@@ -174,6 +222,8 @@ namespace Enemy
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, gameObject.transform.position);
             lineRenderer.SetPosition(1, gameObject.transform.position);
+
+            SetupHead();
 
         }
 
@@ -220,6 +270,7 @@ namespace Enemy
 
         private void HitMe()
         {
+            Debug.Log("hit");
             currentStunnedTimeCooldown = stunnedTime;
 
         }
@@ -249,6 +300,7 @@ namespace Enemy
             {
                 lineRenderer.colorGradient.colorKeys[i].color = c;
             }
+            SetHeadColor(c);
         }
 
         private void ApplyAlpha(float v)
@@ -261,20 +313,29 @@ namespace Enemy
             }
             c.alphaKeys = alphaKeys;
             lineRenderer.colorGradient = c;
+            SetHeadAlpha(v);
         }
 
         public bool HitEnemy(int damage)
         {
-            hitPoints -= damage;
-            if(hitPoints > 0)
+            if (currentStunnedTimeCooldown <= 0)
             {
-                HitMe();
-                return false;
-            } 
+                Debug.Log("HitEnemy " + name);
+                hitPoints -= damage;
+                if (hitPoints > 0)
+                {
+                    HitMe();
+                    return false;
+                }
+                else
+                {
+                    KillMe();
+                    return true;
+                }
+            }
             else
             {
-                KillMe();
-                return true;
+                return false;
             }
         }
     }

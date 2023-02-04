@@ -5,8 +5,6 @@ using UnityEngine;
 public class ScriptAtk360Degrees : MonoBehaviour
 {
 
-    public ScriptPlayerController playerController;
-
     public Transform attackPoint;
     public float attackRenge = 0.5f;
     public LayerMask enemyLayers;

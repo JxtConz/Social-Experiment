@@ -5,20 +5,24 @@ using UnityEngine;
 public class ScriptAtkSlash : MonoBehaviour
 {
 
-    
-
     public Transform attackPoint;
     public float attackRenge = 0.5f;
     public LayerMask enemyLayers;
     public bool canleftATK;
 
-    
-    
+    private Animator animPlayerr;
+
+    private void Start()
+    {
+        animPlayerr = GetComponent<Animator>();
+    }
+
     void Update()
     {
         //Left Click
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            animPlayerr.SetTrigger("isAttack");
 
             if (canleftATK)
             {

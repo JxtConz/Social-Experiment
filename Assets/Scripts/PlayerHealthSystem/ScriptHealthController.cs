@@ -65,7 +65,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
 
     public void HitPlayer(GameObject source, int amount, HitPlayer.HitType hit)
     {
-        Debug.Log("Enemy ATTACK");
+        //Debug.Log("Enemy ATTACK");
         animPlayer.SetTrigger("isHurt");
         audioDead.Play();
         Player_TakeDamage(amount);

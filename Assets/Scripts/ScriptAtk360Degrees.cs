@@ -27,7 +27,7 @@ public class ScriptAtk360Degrees : MonoBehaviour
             if (canrightATK)
             {
                 canrightATK = false;
-                animPlayer.SetTrigger("isAttack360degree");
+                animPlayer.SetTrigger("isAttack360");
                 audioAtk.Play();
                 StartCoroutine(RightAttackSpeed());
             }

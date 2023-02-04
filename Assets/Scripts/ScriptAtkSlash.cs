@@ -28,7 +28,7 @@ public class ScriptAtkSlash : MonoBehaviour
             if (canleftATK)
             {
                 canleftATK = false;
-                animPlayer.SetTrigger("isAttack");
+                animPlayer.SetTrigger("isSlash");
                 if(audioAtk != null)
                   audioAtk.Play();
                 StartCoroutine(LeftAttackSpeed());

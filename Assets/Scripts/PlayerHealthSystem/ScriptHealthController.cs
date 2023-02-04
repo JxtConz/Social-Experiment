@@ -13,6 +13,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     public Animator animPlayer;
 
     public AudioSource audioPlayer;
+    public AudioSource audioDead;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
         {
             Debug.Log("Player Dead!");
             animPlayer.SetTrigger("isDie");
+            audioPlayer.Play();
             StartCoroutine(Player_Dead());
         }
     }
@@ -61,6 +63,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     {
         Debug.Log("Enemy ATTACK");
         animPlayer.SetTrigger("isHurt");
+        audioDead.Play();
         Player_TakeDamage(amount);
     }
 }

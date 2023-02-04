@@ -10,7 +10,6 @@ namespace Enemy
     {
         private const float MIN_NODE_DISTANCE = 0.5f * 0.5f;
 
-
         private List<GameObject> points;
 
         public HitPlayer target;
@@ -49,6 +48,8 @@ namespace Enemy
         public GameObject head;
         private SpriteRenderer headSpriteRenderer;
 
+        public EnemySound sound;
+
         void OnValidate()
         {
             if (testHit)
@@ -80,10 +81,20 @@ namespace Enemy
             return dir.sqrMagnitude < distaceNeededToPlayer;
         }
 
+        private void MakeSound(EnemySound.SoundType s)
+        {
+            if(sound != null)
+            {
+                sound.MakeSound(s);
+            }
+        }
+
         private void ExecuteHit()
         {
             if(currentAttackCooldown < 0)
             {
+
+                MakeSound(EnemySound.SoundType.RootAttack);
                 target.HitPlayer(gameObject, hitStrength, HitPlayer.HitType.RootTip);
                 currentAttackCooldown = cooldown;
             }
@@ -111,6 +122,7 @@ namespace Enemy
             if (head != null)
             {
                 headSpriteRenderer = head.GetComponent<SpriteRenderer>();
+                sound = head.GetComponent<EnemySound>();
                 SetHeadColor(normalColor);
             }
         }
@@ -146,7 +158,7 @@ namespace Enemy
             {
                 Vector3 newDir = dir.normalized * delta;
                 Vector3 newTarget = a.transform.position + newDir;
-                DebugCross(newTarget, Color.blue);
+                //DebugCross(newTarget, Color.blue);
                 if (NeedNewNode(b.transform.position, newTarget))
                 {
                     b = a;
@@ -265,13 +277,12 @@ namespace Enemy
             {
                 currentAttackCooldown -= Time.deltaTime;
             }
-            DebugShow();
         }
 
         private void HitMe()
         {
-            Debug.Log("hit");
             currentStunnedTimeCooldown = stunnedTime;
+            MakeSound(EnemySound.SoundType.RootHurt);
 
         }
 
@@ -283,6 +294,7 @@ namespace Enemy
                 GameObject.Destroy(points[i]);
             }
             points.Clear();
+            MakeSound(EnemySound.SoundType.RootDie);
         }
 
         private void ApplyColor(Color c)
@@ -320,7 +332,6 @@ namespace Enemy
         {
             if (currentStunnedTimeCooldown <= 0)
             {
-                Debug.Log("HitEnemy " + name);
                 hitPoints -= damage;
                 if (hitPoints > 0)
                 {

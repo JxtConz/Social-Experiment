@@ -2325,7 +2325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448431434890511517, guid: c33280798865bde4990d5cf655613dfc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4040973498613938018, guid: c33280798865bde4990d5cf655613dfc, type: 3}
       propertyPath: m_RootOrder
@@ -2373,6 +2373,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230086645388894234, guid: c33280798865bde4990d5cf655613dfc, type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230086645700324124, guid: c33280798865bde4990d5cf655613dfc, type: 3}
+      propertyPath: hitStrength
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5230086645700324124, guid: c33280798865bde4990d5cf655613dfc, type: 3}

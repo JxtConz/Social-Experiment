@@ -23,6 +23,7 @@ public class ScriptEnemyController : MonoBehaviour, HitAbleEnemy
 
     private Animator anim;
 
+    public AudioClip impact;
     public AudioSource audioRoots;
 
     void Start()
@@ -30,6 +31,8 @@ public class ScriptEnemyController : MonoBehaviour, HitAbleEnemy
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        audioRoots = GetComponent<AudioSource>();
 
         enemycurrentHealth = enemyHealth;
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -54,6 +57,11 @@ public class ScriptEnemyController : MonoBehaviour, HitAbleEnemy
             transform.rotation = Quaternion.Euler(Vector3.forward);
             StartCoroutine(Delay_EnemyDead());
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        audioRoots.PlayOneShot(impact, 0.5f);
     }
 
     private IEnumerator Delay_EnemyDead()

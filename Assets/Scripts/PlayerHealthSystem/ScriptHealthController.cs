@@ -15,7 +15,12 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     public AudioSource audioPlayer;
     public AudioSource audioDead;
 
-    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    int currentSceneIndex;
+
+    void Awake()
+    {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
 
     void Start()
     {

@@ -318,14 +318,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7938100766269860159, guid: 6f25bbe9d0d663b42a4ca5f500af87ba, type: 3}
   m_PrefabInstance: {fileID: 744472471}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &206298645
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206298644}
-  m_Enabled: 1
 --- !u!82 &206298646
 AudioSource:
   m_ObjectHideFlags: 0
@@ -432,7 +424,6 @@ GameObject:
   m_Component:
   - component: {fileID: 310366634}
   - component: {fileID: 310366633}
-  - component: {fileID: 310366636}
   - component: {fileID: 310366635}
   m_Layer: 0
   m_Name: Map
@@ -604,14 +595,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &310366636
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310366632}
-  m_Enabled: 1
 --- !u!1 &358870157
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +841,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
@@ -869,14 +851,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,14 +1078,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7938100766269860159, guid: 6f25bbe9d0d663b42a4ca5f500af87ba, type: 3}
   m_PrefabInstance: {fileID: 1309035394}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &564093300
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564093299}
-  m_Enabled: 1
 --- !u!82 &564093301
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1477,14 +1443,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &934471478
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934471474}
-  m_Enabled: 1
 --- !u!1 &1153569628
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,14 +38,14 @@ public class ScriptAtkSlash : MonoBehaviour
 
     private IEnumerator LeftAttackSpeed()
     {
-        Debug.Log("LeftAttack Enemy");
+        //Debug.Log("LeftAttack Enemy");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRenge, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            Debug.Log("attack "  + enemy.name);
+            //Debug.Log("attack "  + enemy.name);
             HitAbleEnemy hit = enemy.GetComponent<HitAbleEnemy>();
             if(hit != null)
             {

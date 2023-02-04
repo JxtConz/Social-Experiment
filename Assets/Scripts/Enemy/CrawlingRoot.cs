@@ -6,7 +6,7 @@ namespace Enemy
 {
 
     [RequireComponent(typeof(LineRenderer))]
-    public class CrawlingRoot : MonoBehaviour, HitAbleEnemy
+    public class CrawlingRoot : MonoBehaviour, HitAbleEnemy, KillAbleEnemy
     {
         private const float MIN_NODE_DISTANCE = 0.5f * 0.5f;
 
@@ -48,7 +48,11 @@ namespace Enemy
         public GameObject head;
         private SpriteRenderer headSpriteRenderer;
 
+<<<<<<< HEAD
         public EnemySound sound;
+=======
+        public event Dying OnDying;
+>>>>>>> 204a5bb (new wave System)
 
         void OnValidate()
         {
@@ -251,6 +255,8 @@ namespace Enemy
                 {
                     this.enabled = false;
                     GameObject.Destroy(gameObject);
+                    if (OnDying != null)
+                        OnDying.Invoke();
                     return;
                 }
             }
@@ -281,6 +287,10 @@ namespace Enemy
 
         private void HitMe()
         {
+<<<<<<< HEAD
+=======
+            //Debug.Log("hit");
+>>>>>>> 204a5bb (new wave System)
             currentStunnedTimeCooldown = stunnedTime;
             MakeSound(EnemySound.SoundType.RootHurt);
 
@@ -332,6 +342,10 @@ namespace Enemy
         {
             if (currentStunnedTimeCooldown <= 0)
             {
+<<<<<<< HEAD
+=======
+                //Debug.Log("HitEnemy " + name);
+>>>>>>> 204a5bb (new wave System)
                 hitPoints -= damage;
                 if (hitPoints > 0)
                 {

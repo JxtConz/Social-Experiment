@@ -34,24 +34,27 @@ public class ScriptPlayerController : MonoBehaviour
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
 
+        
+
+        anim.SetFloat("Horizontal", moveDir.x);
+        anim.SetFloat("Vertical", moveDir.y);
+        anim.SetFloat("moveSpeed", moveDir.sqrMagnitude);
+
         if (moveDir.x == -1f)
         {
-            //anim.SetTrigger("Player_Walk");
-            anim.SetBool("isWay", true);
-
+            
         }
         else if (moveDir.x == 1f)
         {
-            //anim.SetTrigger("Player_Walk");
-            anim.SetBool("isWay", false);
+           
         }
         else if (moveDir.y == 1f)
         {
-            //anim.SetTrigger("Player_Walk");
+            
         }
         else if (moveDir.y == -1f)
         {
-            //anim.SetTrigger("Player_Walk");
+            
         }
 
         moveDir.Normalize();
@@ -80,23 +83,25 @@ public class ScriptPlayerController : MonoBehaviour
         }*/
     }
 
-   /* private IEnumerator LeftAttackSpeed()
-    {
-        Debug.Log("LeftAttack Enemy");
+    
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRenge, enemyLayers);
+    /* private IEnumerator LeftAttackSpeed()
+     {
+         Debug.Log("LeftAttack Enemy");
 
-        if (GameObject.FindGameObjectWithTag("Enemy"))
-        {
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<ScriptEnemyController>().TakeDamageEnemy(1);
-                Debug.Log("1");
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        canleftATK = true;
-    }*/
+         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRenge, enemyLayers);
+
+         if (GameObject.FindGameObjectWithTag("Enemy"))
+         {
+             foreach (Collider2D enemy in hitEnemies)
+             {
+                 enemy.GetComponent<ScriptEnemyController>().TakeDamageEnemy(1);
+                 Debug.Log("1");
+             }
+         }
+         yield return new WaitForSeconds(0.5f);
+         canleftATK = true;
+     }*/
 
     /*private IEnumerator RightAttackSpeed()
     {
@@ -138,5 +143,6 @@ public class ScriptPlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRenge);
     }*/
+
 
 }

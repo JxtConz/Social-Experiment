@@ -10,11 +10,11 @@ public class ScriptHealthController : MonoBehaviour
     public float maxHealth;
 
     public Image healthBar;
-    private Animator animHealth;
+    public Animator animPlayer;
 
     void Start()
     {
-        animHealth = GetComponent<Animator>();
+        animPlayer = GetComponent<Animator>();
         maxHealth = currentHealth;
     }
 
@@ -48,8 +48,7 @@ public class ScriptHealthController : MonoBehaviour
             Debug.Log("Enemy ATTACK");
 
             Player_TakeDamage(1);
-
-            //animHealth.SetTrigger("Player_Hurt");
+            animPlayer.SetTrigger("isHurt");
         }
     }
 }

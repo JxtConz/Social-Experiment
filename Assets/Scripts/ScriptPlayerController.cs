@@ -42,12 +42,11 @@ public class ScriptPlayerController : MonoBehaviour
 
         if (moveDir.x == -1f)
         {
-            
+           
         }
-        else if (moveDir.x == 1f && Input.GetKeyDown(KeyCode.Mouse0))
+        else if (moveDir.x == 1f)
         {
-            Input.GetKeyDown(KeyCode.Mouse0);
-            anim.SetTrigger("isAttack2");
+            
         }
         else if (moveDir.y == 1f)
         {

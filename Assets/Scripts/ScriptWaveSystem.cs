@@ -53,10 +53,24 @@ public class ScriptWaveSystem : MonoBehaviour
             if (AllWaveOver())
             {
                 //Battle is over
-                state = State.Over;
-                Debug.Log("Fight Over!!");
-                OnEnded?.Invoke(this, EventArgs.Empty);
+                if(ScriptTimer.instance.currentTime > 0)
+                {
+                    state = State.Over;
+                    Debug.Log("VICTORY!!");
+                    ScriptTimer.instance.currentTime = 0;
+                    OnEnded?.Invoke(this, EventArgs.Empty);
+                }
+                /*state = State.Over;
+                Debug.Log("VICTORY!!");
+                ScriptTimer.instance.currentTime = 0;
+                OnEnded?.Invoke(this, EventArgs.Empty);*/
             }
+            /*else if(ScriptTimer.instance.currentTime <= 0)
+            {
+                ScriptTimer.instance.currentTime = 0;
+                Time.timeScale = 0f;
+                Debug.Log("DEFEAT");
+            }*/
         }
     }
 
@@ -71,6 +85,12 @@ public class ScriptWaveSystem : MonoBehaviour
             else
             {
                 //Wave not over
+                if (ScriptTimer.instance.currentTime <= 0)
+                {
+                    ScriptTimer.instance.currentTime = 0;
+                    Time.timeScale = 0f;
+                    Debug.Log("DEFEAT");
+                }
                 return false;
             }
         }

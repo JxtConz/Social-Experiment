@@ -36,7 +36,7 @@ public class ScriptHealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Player Dead!");
-            //animHealth.SetTrigger("Player_Dead");
+            animPlayer.SetTrigger("isDie");
             StartCoroutine(Player_Dead());
         }
     }

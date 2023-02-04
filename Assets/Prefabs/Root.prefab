@@ -152,4 +152,5 @@ MonoBehaviour:
   enemycurrentHealth: 1
   floatTextPrefab: {fileID: 7680561762640734103, guid: dc8ed4ad0d2cfd7479284441c86574a0, type: 3}
   boxCollider: {fileID: 2399418069054221923}
-  audioRoots: {fileID: 7283869699453094309, guid: 13155838693d1644c984d01dd110f77d, type: 3}
+  impact: {fileID: 8300000, guid: ccdd629f952f65c44987b1ab8b2f9e95, type: 3}
+  audioRoots: {fileID: 0}

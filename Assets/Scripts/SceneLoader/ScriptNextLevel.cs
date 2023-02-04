@@ -7,6 +7,6 @@ public class ScriptNextLevel : MonoBehaviour
 {
     public void NextLevelButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -12,4 +12,8 @@ public interface HitPlayer
     }
 
     void HitPlayer(GameObject source, int amount, HitType hit);
+
+    Transform transform {
+        get;
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScriptHealthController : MonoBehaviour
+public class ScriptHealthController : MonoBehaviour, HitPlayer
 {
 
     public float currentHealth;
@@ -41,6 +41,7 @@ public class ScriptHealthController : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -50,5 +51,13 @@ public class ScriptHealthController : MonoBehaviour
             Player_TakeDamage(1);
             animPlayer.SetTrigger("isHurt");
         }
+    }
+    */
+
+    public void HitPlayer(GameObject source, int amount, HitPlayer.HitType hit)
+    {
+        Debug.Log("Enemy ATTACK");
+        animPlayer.SetTrigger("isHurt");
+        Player_TakeDamage(amount);
     }
 }

@@ -1305,7 +1305,7 @@ GameObject:
   - component: {fileID: 1430154172}
   - component: {fileID: 1430154171}
   - component: {fileID: 1430154170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1324,10 +1324,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab099556b3f2fb40a2a31b95723ccd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1219820724}
-  speed: 3
+  speed: 2
+  distaceNeededToPlayer: 0.5
   sortingLayerID: -1
   sortingOrder: -1
+  cooldown: 1
+  hitStrength: 0
 --- !u!120 &1430154171
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1387,6 +1389,15 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.92830366
+        value: 0.2199775
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

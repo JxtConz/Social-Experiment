@@ -10,11 +10,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Wall
   - Water
   - UI
   - Enemy
-  - Wall
   - 
   - 
   - 
@@ -38,6 +37,7 @@ TagManager:
   - 
   - 
   - 
+  - EnemyTip
   - 
   m_SortingLayers:
   - name: Default

@@ -12,6 +12,8 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
     public Image healthBar;
     public Animator animPlayer;
 
+    public AudioSource audioPlayer;
+
     void Start()
     {
         animPlayer = GetComponent<Animator>();
@@ -49,6 +51,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
             Debug.Log("Enemy ATTACK");
 
             Player_TakeDamage(1);
+            audioPlayer.Play();
             animPlayer.SetTrigger("isHurt");
         }
     }

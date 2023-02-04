@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - BGUI
   - 
   - 
   - 
@@ -57,4 +57,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2054313205
+    locked: 0
+  - name: BGButton
+    uniqueID: 3736021991
     locked: 0

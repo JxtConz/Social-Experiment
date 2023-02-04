@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScriptWaveSystem : MonoBehaviour
 {
 
     public event EventHandler OnEnded;
+
+    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
     private enum State
     {
@@ -59,6 +62,8 @@ public class ScriptWaveSystem : MonoBehaviour
                     Debug.Log("VICTORY!!");
                     ScriptTimer.instance.currentTime = 0;
                     OnEnded?.Invoke(this, EventArgs.Empty);
+
+                    SceneManager.LoadScene(2);
                 }
                 /*state = State.Over;
                 Debug.Log("VICTORY!!");

@@ -48,11 +48,8 @@ namespace Enemy
         public GameObject head;
         private SpriteRenderer headSpriteRenderer;
 
-<<<<<<< HEAD
         public EnemySound sound;
-=======
         public event Dying OnDying;
->>>>>>> 204a5bb (new wave System)
 
         void OnValidate()
         {
@@ -287,10 +284,6 @@ namespace Enemy
 
         private void HitMe()
         {
-<<<<<<< HEAD
-=======
-            //Debug.Log("hit");
->>>>>>> 204a5bb (new wave System)
             currentStunnedTimeCooldown = stunnedTime;
             MakeSound(EnemySound.SoundType.RootHurt);
 
@@ -342,10 +335,6 @@ namespace Enemy
         {
             if (currentStunnedTimeCooldown <= 0)
             {
-<<<<<<< HEAD
-=======
-                //Debug.Log("HitEnemy " + name);
->>>>>>> 204a5bb (new wave System)
                 hitPoints -= damage;
                 if (hitPoints > 0)
                 {

@@ -10,11 +10,11 @@ public class ScriptAtkSlash : MonoBehaviour
     public LayerMask enemyLayers;
     public bool canleftATK;
 
-    private Animator animPlayerr;
+    private Animator animPlayer;
 
     private void Start()
     {
-        animPlayerr = GetComponent<Animator>();
+        animPlayer = GetComponent<Animator>();
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class ScriptAtkSlash : MonoBehaviour
         //Left Click
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            animPlayerr.SetTrigger("isAttack");
+            animPlayer.SetTrigger("isAttack");
 
             if (canleftATK)
             {

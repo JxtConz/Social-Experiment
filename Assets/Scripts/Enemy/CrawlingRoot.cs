@@ -12,9 +12,13 @@ namespace Enemy
 
         private List<GameObject> points;
 
-        public Transform target;
+        public HitPlayer target;
 
         public float speed = 3;
+
+        public float distaceNeededToPlayer = 0.5f;
+
+        private float distaceNeededToPlayerSqr;
 
         private bool end = false;
 
@@ -23,24 +27,44 @@ namespace Enemy
         public int sortingLayerID;
         public int sortingOrder;
 
+        private float currentCooldown;
+
+        public float cooldown;
+
+        public int hitStrength;
+
         private Vector3 GetTarget()
         {
-            return target.position;
+            return target.transform.position;
         }
 
-        private GameObject createNewNode(Vector3 pos)
+        private GameObject CreateNewNode(Vector3 pos)
         {
             GameObject g = new GameObject(gameObject.name + " " + points.Count);
             g.transform.position = pos;
             g.transform.parent = transform;
             g.AddComponent<BoxCollider2D>();
+            g.layer = this.gameObject.layer;
             return g;
+        }
+
+        private bool CheckIfAtPlayer(Vector3 dir)
+        {
+            return dir.sqrMagnitude < distaceNeededToPlayer;
+        }
+
+        private void ExecuteHit()
+        {
+            if(currentCooldown < 0)
+            {
+                target.HitPlayer(gameObject, hitStrength, HitPlayer.HitType.RootTip);
+                currentCooldown = cooldown;
+            }
         }
 
         private bool NeedNewNode(Vector3 a, Vector3 b)
         {
             Vector3 dis = a - b;
-            Debug.Log(dis.sqrMagnitude);
             return dis.sqrMagnitude > MIN_NODE_DISTANCE;
         }
 
@@ -50,21 +74,19 @@ namespace Enemy
             GameObject b = points[points.Count - 2];
 
             Vector3 dir = (GetTarget() - a.transform.position);
-            if(dir.sqrMagnitude < 0.001f)
+            if(CheckIfAtPlayer(dir))
             {
-                Debug.Log("at player");
-                end = true;
+                ExecuteHit();
             } 
             else
             {
                 Vector3 newDir = dir.normalized * delta;
                 Vector3 newTarget = a.transform.position + newDir;
-                Debug.Log("newTarget " + newTarget + " dir " + dir.normalized + " " + delta);
                 DebugCross(newTarget, Color.blue);
                 if (NeedNewNode(b.transform.position, newTarget))
                 {
                     b = a;
-                    a = createNewNode(newTarget);
+                    a = CreateNewNode(newTarget);
                     points.Add(a);
                     lineRenderer.positionCount = points.Count;
                     lineRenderer.SetPosition(points.Count - 1, newTarget);
@@ -86,24 +108,12 @@ namespace Enemy
             Vector3 dir = last.transform.position - c.transform.position;
             if(dir != Vector3.zero)
             {
-                
                 float length = dir.magnitude;
-                //center =  center / length;
-                //float angle = Vector3.Angle(center, transform.forward);
-                //Quaternion m_MyQuaternion;
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                c.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-                //m_MyQuaternion = Quaternion.FromToRotation(transform.rotation.SetLookRotation, dir);
-
-                //Debug.Log(length + " " + m_MyQuaternion);
-
-                //c.transform.rotation = m_MyQuaternion * transform.rotation;
-                //transform.rotation.SetLookRotation(dir, Vector3.right);
-                //c.transform.LookAt(last.transform, Vector3.forward);
-                float f = Vector3.SignedAngle(Vector3.forward, dir.normalized, Vector3.forward);
-                c.transform.rotation.SetEulerAngles(0, 0, f);
-                coll.size = new Vector2(1, length * 2);
-                coll.offset = new Vector2(0, -length / 2); 
-                
+                coll.size = new Vector2(length, 1);
+                coll.offset = new Vector2(length / 2, 0); 
             }
                         
         }
@@ -126,26 +136,37 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if(player == null)
+            {
+                Debug.Log("cant find player end");
+                enabled = false;
+                return;
+            }
+                
+            target = player.GetComponent<HitPlayer>();
+
+            distaceNeededToPlayerSqr = distaceNeededToPlayer * distaceNeededToPlayerSqr;
             points = new List<GameObject>();
             points.Add(gameObject);
-            points.Add(createNewNode(gameObject.transform.position));
+            points.Add(CreateNewNode(gameObject.transform.position));
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, gameObject.transform.position);
             lineRenderer.SetPosition(1, gameObject.transform.position);
 
-
-            //lineRenderer.sortingLayerID = sortingLayerID;
-            //lineRenderer.sortingOrder = sortingOrder;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!end)
+            if (currentCooldown < 0)
             {
                 float moveDis = Time.deltaTime * speed;
                 MoveOrCreateNode(moveDis);
+            } else
+            {
+                currentCooldown -= Time.deltaTime;
             }
             DebugShow();
         }

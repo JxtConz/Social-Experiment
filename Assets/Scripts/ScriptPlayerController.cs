@@ -40,7 +40,7 @@ public class ScriptPlayerController : MonoBehaviour
         anim.SetFloat("Vertical", moveDir.y);
         anim.SetFloat("moveSpeed", moveDir.sqrMagnitude);*/
 
-        if (moveDir.x == -1f)
+        /*if (moveDir.x == -1f)
         {
             anim.SetTrigger("isLeft");
         }
@@ -55,7 +55,7 @@ public class ScriptPlayerController : MonoBehaviour
         else if (moveDir.y == -1f)
         {
             anim.SetTrigger("isTop");
-        }
+        }*/
 
         moveDir.Normalize();
         rb2d.velocity = moveDir * moveSpeed;

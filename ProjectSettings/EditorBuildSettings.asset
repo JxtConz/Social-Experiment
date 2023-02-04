@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Next Level 1.unity
     guid: 036d1658716dc4d45b76e4645ca7592b
   - enabled: 1
-    path: Assets/Scenes/Defeat-EndGame Scene.unity
+    path: Assets/Scenes/Defeat Scene.unity
     guid: 92a3ef45cf9f8754eb82ab521a83550e
+  - enabled: 1
+    path: Assets/Scenes/EnemyTest 1.unity
+    guid: b35d9ed196fc2d44bab80b438d5c52b8
   m_configObjects: {}

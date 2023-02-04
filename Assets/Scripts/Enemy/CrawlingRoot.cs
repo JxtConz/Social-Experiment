@@ -6,9 +6,10 @@ namespace Enemy
 {
 
     [RequireComponent(typeof(LineRenderer))]
-    public class CrawlingRoot : MonoBehaviour
+    public class CrawlingRoot : MonoBehaviour, HitAbleEnemy
     {
         private const float MIN_NODE_DISTANCE = 0.5f * 0.5f;
+
 
         private List<GameObject> points;
 
@@ -20,18 +21,37 @@ namespace Enemy
 
         private float distaceNeededToPlayerSqr;
 
-        private bool end = false;
-
         private LineRenderer lineRenderer;
 
         public int sortingLayerID;
         public int sortingOrder;
 
-        private float currentCooldown;
+        private float currentAttackCooldown;
+        private float currentDeadTimeCooldown;
+        private float currentStunnedTimeCooldown;
 
         public float cooldown;
 
         public int hitStrength;
+
+        public int hitPoints;
+
+        public float stunnedTime = 0.5f;
+        public float fadeDeadTime = 2;
+
+        public Color normalColor = Color.white;
+        public Color hitColor = Color.red;
+
+        public bool testHit;
+
+        void OnValidate()
+        {
+            if (testHit)
+            {
+                testHit = false;
+                HitEnemy(1);
+            }
+        }
 
         private Vector3 GetTarget()
         {
@@ -55,10 +75,10 @@ namespace Enemy
 
         private void ExecuteHit()
         {
-            if(currentCooldown < 0)
+            if(currentAttackCooldown < 0)
             {
                 target.HitPlayer(gameObject, hitStrength, HitPlayer.HitType.RootTip);
-                currentCooldown = cooldown;
+                currentAttackCooldown = cooldown;
             }
         }
 
@@ -139,7 +159,7 @@ namespace Enemy
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if(player == null)
             {
-                Debug.Log("cant find player end");
+                Debug.LogWarning("cant find player end");
                 enabled = false;
                 return;
             }
@@ -160,15 +180,102 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
-            if (currentCooldown < 0)
+            if (currentDeadTimeCooldown > 0)
             {
+                float fade = currentDeadTimeCooldown / fadeDeadTime;
+                ApplyAlpha(fade);
+                currentDeadTimeCooldown -= Time.deltaTime;
+                if (currentDeadTimeCooldown < 0)
+                {
+                    this.enabled = false;
+                    GameObject.Destroy(gameObject);
+                    return;
+                }
+            }
+            else if (currentStunnedTimeCooldown > 0)
+            {
+                float fade = currentStunnedTimeCooldown / stunnedTime;
+                if (fade < 0.5)
+                {
+                    ApplyColor(Color.Lerp(normalColor, hitColor, fade * 2));
+                } 
+                else
+                {
+                    ApplyColor(Color.Lerp(hitColor, normalColor, (fade - 0.5f) * 2));
+                }
+                currentStunnedTimeCooldown -= Time.deltaTime;
+            } 
+            else if (currentAttackCooldown < 0)
+            {
+                ApplyColor(normalColor);
                 float moveDis = Time.deltaTime * speed;
                 MoveOrCreateNode(moveDis);
-            } else
+            }
+            else
             {
-                currentCooldown -= Time.deltaTime;
+                currentAttackCooldown -= Time.deltaTime;
             }
             DebugShow();
+        }
+
+        private void HitMe()
+        {
+            currentStunnedTimeCooldown = stunnedTime;
+
+        }
+
+        private void KillMe()
+        {
+            currentDeadTimeCooldown = fadeDeadTime;
+            for (int i = 1; i < points.Count; i++)
+            {
+                GameObject.Destroy(points[i]);
+            }
+            points.Clear();
+        }
+
+        private void ApplyColor(Color c)
+        {
+            Gradient g = lineRenderer.colorGradient;
+            GradientColorKey[] colorKeys = g.colorKeys;
+            for (int j = 0; j < colorKeys.Length; j++)
+            {
+                colorKeys[j].color = c;
+            }
+            g.colorKeys = colorKeys;
+            lineRenderer.colorGradient = g;
+
+            for (int i = 0; i < lineRenderer.colorGradient.colorKeys.Length; i++)
+            {
+                lineRenderer.colorGradient.colorKeys[i].color = c;
+            }
+        }
+
+        private void ApplyAlpha(float v)
+        {
+            Gradient c = lineRenderer.colorGradient;
+            GradientAlphaKey[] alphaKeys = c.alphaKeys;
+            for (int j = 0; j < alphaKeys.Length; j++)
+            {
+                alphaKeys[j].alpha = v;
+            }
+            c.alphaKeys = alphaKeys;
+            lineRenderer.colorGradient = c;
+        }
+
+        public bool HitEnemy(int damage)
+        {
+            hitPoints -= damage;
+            if(hitPoints > 0)
+            {
+                HitMe();
+                return false;
+            } 
+            else
+            {
+                KillMe();
+                return true;
+            }
         }
     }
 }

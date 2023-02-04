@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5230086645700324125}
   m_Layer: 6
   m_Name: AltRoot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   sortingLayerID: -1
   sortingOrder: -1
   cooldown: 1
-  hitStrength: 0
-  hitPoints: 5
+  hitStrength: 1
+  hitPoints: 3
   stunnedTime: 0.25
   fadeDeadTime: 2
   normalColor: {r: 1, g: 1, b: 1, a: 1}

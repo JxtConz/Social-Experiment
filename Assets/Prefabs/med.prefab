@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab099556b3f2fb40a2a31b95723ccd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 4
   distaceNeededToPlayer: 0.5
   sortingLayerID: -1
   sortingOrder: -1

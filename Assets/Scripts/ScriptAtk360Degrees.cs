@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScriptAtk360Degrees : MonoBehaviour
 {
-
     public Transform attackPoint;
     public float attackRenge = 0.5f;
     public LayerMask enemyLayers;
@@ -48,7 +47,7 @@ public class ScriptAtk360Degrees : MonoBehaviour
                 Debug.Log("2");
             }
         }
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         canrightATK = true;
     }
 

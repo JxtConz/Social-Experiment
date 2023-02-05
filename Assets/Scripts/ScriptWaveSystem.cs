@@ -9,8 +9,6 @@ public class ScriptWaveSystem : MonoBehaviour
 
     public event EventHandler OnEnded;
 
-    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
     private enum State
     {
         Idle,
@@ -62,8 +60,6 @@ public class ScriptWaveSystem : MonoBehaviour
                     Debug.Log("VICTORY!!");
                     ScriptTimer.instance.currentTime = 0;
                     OnEnded?.Invoke(this, EventArgs.Empty);
-
-                    SceneManager.LoadScene(2);
                 }
                 /*state = State.Over;
                 Debug.Log("VICTORY!!");

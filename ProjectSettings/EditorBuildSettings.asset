@@ -9,45 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu Scene.unity
     guid: 5c938b5bcc2f1f146bc1259350fe5b0a
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/Ingame_Scene/InGame Scene 2.unity
     guid: 55a5e87c418e9db4eb5fa2ea8b258a4a
-  - enabled: 1
-    path: Assets/Scenes/Next Level 1.unity
-    guid: 036d1658716dc4d45b76e4645ca7592b
-  - enabled: 1
-=======
->>>>>>> 5a17931 (LoadScene-Sprite)
-    path: Assets/Scenes/Defeat Scene.unity
-    guid: 92a3ef45cf9f8754eb82ab521a83550e
-  - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/Level2 1.unity
-    guid: 313f84cce725d474798c54cb5ab9dc57
   - enabled: 1
     path: Assets/Scenes/Next Level/Next Level 1.unity
     guid: 036d1658716dc4d45b76e4645ca7592b
   - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/Level2 2.unity
-    guid: 60dd8ae27b25cf846a23d8003fcbff62
-  - enabled: 1
-    path: Assets/Scenes/Next Level/Next Level 2.unity
-    guid: 11faa01f185e98940b6312b947b88b88
-  - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/Level2 3.unity
-    guid: 6f8956d5636c82545bfc7c018819efe7
-  - enabled: 1
-    path: Assets/Scenes/Next Level/Next Level 3.unity
-    guid: ece9efcb645b9c04dafd1f6626304ae2
-  - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/Level2 4.unity
-    guid: 4ecee1a20688c2b49966661ae5d4abc7
-  - enabled: 1
-    path: Assets/Scenes/Next Level/Next Level 4.unity
-    guid: 6515b2ddee70b8c498bd899c01044dc6
-  - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/Level2 5.unity
-    guid: a3f1df65a9fbc8046ae21178bd856791
-  - enabled: 1
-    path: Assets/Scenes/Victory Scene.unity
-    guid: 307e2687588671742a096464bb2de76d
+    path: Assets/Scenes/Defeat Scene.unity
+    guid: 92a3ef45cf9f8754eb82ab521a83550e
   m_configObjects: {}

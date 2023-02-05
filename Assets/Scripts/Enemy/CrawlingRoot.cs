@@ -300,7 +300,7 @@ namespace Enemy
             points.Clear();
             MakeSound(EnemySound.SoundType.RootDie);
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         private void ApplyColor(Color c)

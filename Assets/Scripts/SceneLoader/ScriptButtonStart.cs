@@ -7,6 +7,6 @@ public class ScriptButtonStart : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 }

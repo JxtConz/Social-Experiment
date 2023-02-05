@@ -269,13 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveFlip: {fileID: 7648638943167785946}
-  attackPoint: {fileID: 7648638942620260605}
-  attackRenge: 0.8
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  canleftATK: 1
-  canrightATK: 1
 --- !u!114 &7648638943167785937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,9 +281,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab3039c7984d664082a032a6219b0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 300
+  maxHealth: 300
   healthBar: {fileID: 7648638942294003701}
+  animPlayer: {fileID: 0}
+  audioPlayer: {fileID: 0}
+  audioDead: {fileID: 0}
 --- !u!95 &7648638943167785936
 Animator:
   serializedVersion: 4

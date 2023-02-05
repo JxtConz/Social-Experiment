@@ -38,7 +38,7 @@ public class ScriptHealthController : MonoBehaviour, HitPlayer
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
 
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
     public void Player_TakeDamage(int amount)

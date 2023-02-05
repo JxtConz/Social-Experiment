@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Enemy
 {
@@ -298,6 +299,8 @@ namespace Enemy
             }
             points.Clear();
             MakeSound(EnemySound.SoundType.RootDie);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         private void ApplyColor(Color c)

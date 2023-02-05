@@ -6,6 +6,8 @@ namespace Wave
 {
     public class SpawnManager : MonoBehaviour
     {
+
+        public GameObject end;
         public Finishable finishable;
 
         public EnemyData data;
@@ -43,6 +45,9 @@ namespace Wave
                 w.Manager = this;
             }
             currentWave = -1;
+
+            if (end != null)
+                finishable = end.GetComponent<Finishable>();
         }
 
         private WaveCondition[] getWaveConditionInOrder()

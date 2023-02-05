@@ -4,5 +4,47 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu Scene.unity
+    guid: 5c938b5bcc2f1f146bc1259350fe5b0a
+  - enabled: 1
+    path: Assets/Scenes/Defeat Scene.unity
+    guid: 92a3ef45cf9f8754eb82ab521a83550e
+  - enabled: 1
+    path: Assets/Scenes/Story.unity
+    guid: 1e26f0deecf3d524fa26450ed5d4cb22
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Ingame_Scene/InGame Scene 1.unity
+    guid: 2b50a40e8d2c5c143bb558e45dab4cd7
+  - enabled: 1
+    path: Assets/Scenes/Next Level/Next Level 1.unity
+    guid: 036d1658716dc4d45b76e4645ca7592b
+  - enabled: 1
+    path: Assets/Scenes/Ingame_Scene/InGame Scene 2.unity
+    guid: 6f8956d5636c82545bfc7c018819efe7
+  - enabled: 1
+    path: Assets/Scenes/Next Level/Next Level 2.unity
+    guid: 11faa01f185e98940b6312b947b88b88
+  - enabled: 1
+    path: Assets/Scenes/Ingame_Scene/InGame Scene 3.unity
+    guid: 86d375298954697479a88cbdfc36878c
+  - enabled: 1
+    path: Assets/Scenes/Next Level/Next Level 3.unity
+    guid: ece9efcb645b9c04dafd1f6626304ae2
+  - enabled: 1
+    path: Assets/Scenes/Ingame_Scene/InGame Scene 4.unity
+    guid: 91a3422ca3e66b1488f9941c084c6998
+  - enabled: 1
+    path: Assets/Scenes/Next Level/Next Level 4.unity
+    guid: 6515b2ddee70b8c498bd899c01044dc6
+  - enabled: 1
+    path: Assets/Scenes/Ingame_Scene/InGame Scene 5.unity
+    guid: ac9715fbdd1992c4197201ea96849d46
+  - enabled: 1
+    path: Assets/Scenes/Victory Scene.unity
+    guid: 307e2687588671742a096464bb2de76d
   m_configObjects: {}

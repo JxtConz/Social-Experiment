@@ -7,6 +7,6 @@ public class ScriptRestartButton : MonoBehaviour
 {
     public void RestartButton()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 }

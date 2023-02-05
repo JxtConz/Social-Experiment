@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: {fileID: 7648638943167785937, guid: 071e60c7d2f1d6a4ba843c93db3d7232, type: 3}
-  moveSpeed: 2
+  moveSpeed: 3.5
   enemyHealth: 1
   enemycurrentHealth: 1
   floatTextPrefab: {fileID: 7680561762640734103, guid: dc8ed4ad0d2cfd7479284441c86574a0, type: 3}

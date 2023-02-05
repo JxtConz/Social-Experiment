@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a302c651f6ff24498bf483b6cd81da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesIds: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  enemiesIds: 00000000000000000000000000000000
   spawnIds: 41004200
   aliveEnemies: 2147483647
   manager: {fileID: 0}
@@ -2174,10 +2174,6 @@ PrefabInstance:
     - target: {fileID: 1257329419024911196, guid: c5af73f1d616bd344baba30f68c293d4, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2906537082162480693, guid: c5af73f1d616bd344baba30f68c293d4, type: 3}
-      propertyPath: _speed
-      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5af73f1d616bd344baba30f68c293d4, type: 3}

@@ -4,21 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainMenu Scene.unity
-    guid: 5c938b5bcc2f1f146bc1259350fe5b0a
-  - enabled: 1
-    path: Assets/Scenes/Ingame_Scene/InGame Scene 2.unity
-    guid: 55a5e87c418e9db4eb5fa2ea8b258a4a
-  - enabled: 1
-    path: Assets/Scenes/Next Level/Next Level 1.unity
-    guid: 036d1658716dc4d45b76e4645ca7592b
-  - enabled: 1
-    path: Assets/Scenes/Defeat Scene.unity
-    guid: 92a3ef45cf9f8754eb82ab521a83550e
-=======
   m_Scenes: []
->>>>>>> 37bbce7 (s...)
   m_configObjects: {}

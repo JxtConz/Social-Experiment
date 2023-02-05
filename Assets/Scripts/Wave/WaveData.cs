@@ -32,7 +32,7 @@ namespace Wave
             allSpawners = manager.getGroup(spawnIds);
         }
 
-        private SpawnSource GetRandomSpawner()
+        protected SpawnSource GetRandomSpawner()
         {
             if(currentSpawner == null || currentSpawner.Count == 0)
             {
